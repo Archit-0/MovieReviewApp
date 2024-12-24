@@ -110,7 +110,27 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
 });
 
 const updateCurrentUserUpdate = asyncHandler(async (req, res) => {
-  const user = await User
+  const user = await User.findById(req.user.id);
+  if (user) {
+    user.username = req.body.username || user.username;
+    user.email = req.body.email || user.email;
+
+    if (req.body.password) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(req.body.password, salt);
+      user.password = hashedPassword;
+    }
+    const updatedUser = await user.save();
+    res.json({
+      id: updatedUser.id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+      isAdmin: updated.isAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User Not Found in updated ");
+  }
 });
 export {
   createUser,

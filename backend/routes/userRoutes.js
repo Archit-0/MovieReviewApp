@@ -10,7 +10,6 @@ import {
 } from "../controller/userController.js";
 //middleware
 
-
 import {
   authenticate,
   authenticateAdmin,
@@ -24,8 +23,7 @@ router
   .get(authenticate, authenticateAdmin, getAllUsers);
 router.route("/login").post(loginUser);
 router.post("/logOut", logOutCurrentUser);
-router
-  .get("/profile", authenticate, getCurrentUserProfile)
-  .put(authenticate, updateCurrentUserUpdate);
+router.get("/profile", authenticate, getCurrentUserProfile);
+router.put("/profile", authenticate, updateCurrentUserUpdate);
 
 export default router;
