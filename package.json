@@ -1,0 +1,37 @@
+{
+  "name": "movieapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "fullstack": "concurrently \"npm run frontview\" \"npm run backend\"",
+    "frontend": "cd frontview && npm run dev",
+    "backend": "nodemon backend/index.js"
+  },
+  "keywords": [],
+  "author": "Archit jain",
+  "license": "MIT",
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "concurrently": "^9.1.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.3",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.7",
+    "react-icons": "^5.4.0",
+    "react-toastify": "^11.0.2",
+    "redux": "^5.0.1",
+    "tailwind": "^4.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17"
+  },
+  "description": ""
+}

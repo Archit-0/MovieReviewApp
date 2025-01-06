@@ -1,29 +1,30 @@
 import express from "express";
-// controller
+// controllers
 import {
   createUser,
   loginUser,
-  logOutCurrentUser,
+  logoutCurrentUser,
   getAllUsers,
   getCurrentUserProfile,
-  updateCurrentUserUpdate,
-} from "../controller/userController.js";
-//middleware
+  updateCurrentUserProfile,
+} from "../controllers/userController.js";
 
-import {
-  authenticate,
-  authenticateAdmin,
-} from "../middleware/authMiddleware.js";
+// middlewares
+import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
 router
   .route("/")
   .post(createUser)
-  .get(authenticate, authenticateAdmin, getAllUsers);
-router.route("/login").post(loginUser);
-router.post("/logOut", logOutCurrentUser);
-router.get("/profile", authenticate, getCurrentUserProfile);
-router.put("/profile", authenticate, updateCurrentUserUpdate);
+  .get(authenticate, authorizeAdmin, getAllUsers);
+
+router.post("/auth", loginUser);
+router.post("/logout", logoutCurrentUser);
+
+router
+  .route("/profile")
+  .get(authenticate, getCurrentUserProfile)
+  .put(authenticate, updateCurrentUserProfile);
 
 export default router;

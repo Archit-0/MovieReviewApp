@@ -1,0 +1,1 @@
+ className="hidden nav-item-name mt-[3rem]"
