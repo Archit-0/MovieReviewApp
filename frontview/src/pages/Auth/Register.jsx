@@ -41,12 +41,8 @@ const Register = () => {
         navigate(redirect);
         toast.success("User successfully registered.");
       } catch (err) {
-        console.log(err); // Log the entire error object to check its structure
-        if (err.data && err.data.message) {
-          toast.error(err.data.message);
-        } else {
-          toast.error("An unexpected error occurred.");
-        }
+        console.log(err);
+        toast.error(err.data.message);
       }
     }
   };
