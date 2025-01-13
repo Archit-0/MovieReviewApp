@@ -4,7 +4,7 @@ import {
   useUpdateGenreMutation,
   useDeleteGenreMutation,
   useFetchGenresQuery,
-} from "../../redux/api/genraF";
+} from "../../redux/api/genre";
 
 import { toast } from "react-toastify";
 import GenreForm from "../../components/GenreForm";

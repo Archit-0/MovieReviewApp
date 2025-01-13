@@ -1,2 +1,0 @@
-npm i bcryptjs body-parser concurrently cookie-parser dotenv express jsonwebtoken mongoose multer nodemon
-npm i react-icons react-redux @reduxjs/toolkit react-router react-router-dom react-toastify slick-carousel

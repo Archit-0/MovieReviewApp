@@ -1,12 +1,11 @@
 import { apiSlice } from "./apiSlice";
-import { UPLOAD_URL, MOVIE_URL } from "../constant";
+import { MOVIE_URL, UPLOAD_URL } from "../constant";
 
-export const movieApiSlice = apiSlice.injectEndpoints({
+export const moviesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllMovies: builder.query({
       query: () => `${MOVIE_URL}/all-movies`,
     }),
-
     createMovie: builder.mutation({
       query: (newMovie) => ({
         url: `${MOVIE_URL}/create-movie`,
@@ -16,10 +15,10 @@ export const movieApiSlice = apiSlice.injectEndpoints({
     }),
 
     updateMovie: builder.mutation({
-      query: ({ id, updateMovie }) => ({
+      query: ({ id, updatedMovie }) => ({
         url: `${MOVIE_URL}/update-movie/${id}`,
         method: "PUT",
-        body: updateMovie,
+        body: updatedMovie,
       }),
     }),
 
@@ -51,10 +50,10 @@ export const movieApiSlice = apiSlice.injectEndpoints({
     }),
 
     uploadImage: builder.mutation({
-      query: (FormData) => ({
+      query: (formData) => ({
         url: `${UPLOAD_URL}`,
         method: "POST",
-        body: FormData,
+        body: formData,
       }),
     }),
 
@@ -73,15 +72,16 @@ export const movieApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  allMoviesQuery,
-  createMovieQuery,
-  updateMovieQuery,
-  addMovieReviewQuery,
-  deleteCommentQuery,
-  deleteMovieQuery,
-  specificMovieQuery,
-  uploadImageQuery,
-  getNewMoviesQuery,
-  getTopMoviesQuery,
-  getRandomMoviesQuery,
-} = movieApiSlice;
+  useGetAllMoviesQuery,
+  useCreateMovieMutation,
+  useUpdateMovieMutation,
+  useAddMovieReviewMutation,
+  useDeleteCommentMutation,
+  useGetSpecificMovieQuery,
+  useUploadImageMutation,
+  useDeleteMovieMutation,
+  //
+  useGetNewMoviesQuery,
+  useGetTopMoviesQuery,
+  useGetRandomMoviesQuery,
+} = moviesApiSlice;
