@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "cd frontview && npm install && npm run build",
+  "outputDirectory": "frontview/dist",
   "framework": "vite"
 }
