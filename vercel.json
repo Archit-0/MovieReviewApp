@@ -1,5 +1,7 @@
 {
   "buildCommand": "cd frontview && npm install && npm run build",
   "outputDirectory": "frontview/dist",
-  "framework": "vite"
+  "routes": [
+    { "src": "/api/(.*)", "dest": "api/index.js" }
+  ]
 }
