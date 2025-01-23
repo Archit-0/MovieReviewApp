@@ -3,7 +3,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import path from "path";
-
+import serverless from "serverless-http";
 // Files
 import connectDB from "../backend/config/db.js";
 import userRoutes from "../backend/routes/userRoutes.js";
