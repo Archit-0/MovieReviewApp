@@ -3,8 +3,7 @@
   "builds": [
     {
       "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "dest": "/frontend"
+      "use": "@vercel/static-build"
     },
     {
       "src": "backend/api/*.js",
@@ -14,7 +13,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/api/$1.js"
+      "dest": "/backend/api/$1.js"
     }
   ]
 }
