@@ -3,13 +3,13 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import path from "path";
-import serverless from "serverless-http";
+// import serverless from "serverless-http";
 // Files
-import connectDB from "../backend/config/db.js";
-import userRoutes from "../backend/routes/userRoutes.js";
-import genreRoutes from "../backend/routes/genreRoutes.js";
-import moviesRoutes from "../backend/routes/moviesRoutes.js";
-import uploadRoutes from "../backend/routes/uploadRoutes.js";
+import connectDB from "../config/db.js";
+import userRoutes from "../routes/userRoutes.js";
+import genreRoutes from "../routes/genreRoutes.js";
+import moviesRoutes from "../routes/moviesRoutes.js";
+import uploadRoutes from "../routes/uploadRoutes.js";
 
 // Configuration
 dotenv.config();

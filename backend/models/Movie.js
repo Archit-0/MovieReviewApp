@@ -1,36 +1,34 @@
-// Packages
-import express from "express";
-import cookieParser from "cookie-parser";
-import dotenv from "dotenv";
-import path from "path";
+import mongoose from "mongoose";
+const { ObjectId } = mongoose.Schema;
 
-// Files
-import connectDB from "./config/db.js";
-import userRoutes from "./routes/userRoutes.js";
-import genreRoutes from "./routes/genreRoutes.js";
-import moviesRoutes from "./routes/moviesRoutes.js";
-import uploadRoutes from "./routes/uploadRoutes.js";
+const reviewSchema = mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    rating: { type: Number, required: true },
+    comment: { type: String, required: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
+  },
+  { timestamps: true }
+);
 
-// Configuration
-dotenv.config();
-connectDB();
+const movieSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    image: { type: String },
+    year: { type: Number, required: true },
+    genre: { type: ObjectId, ref: "Genre", required: true },
+    detail: { type: String, required: true },
+    cast: [{ type: String }],
+    reviews: [reviewSchema],
+    numReviews: { type: Number, required: true, default: 0 },
+    createdAt: { type: Date, default: Date.now },
+  },
+  { timestamps: true }
+);
 
-const app = express();
-
-// middlewares
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-
-const PORT = process.env.PORT || 3000;
-
-// Routes
-app.use("/api/v1/users", userRoutes);
-app.use("/api/v1/genre", genreRoutes);
-app.use("/api/v1/movies", moviesRoutes);
-app.use("/api/v1/upload", uploadRoutes);
-
-const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
-
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+const Movie = mongoose.model("Movie", movieSchema);
+export default Movie;
