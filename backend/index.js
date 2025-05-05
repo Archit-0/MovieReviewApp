@@ -17,19 +17,8 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// ✅ Enable CORS for all origins
-app.use(
-  cors({
-    origin: "*", // Allow all origins
-    credentials: true, // Allow cookies (if needed)
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-
-// Middlewares
+// middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
